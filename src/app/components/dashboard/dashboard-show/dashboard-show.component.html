@@ -1,0 +1,30 @@
+<section id="page-cart" *ngIf="dashboard">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col">
+        <a class="btn btn-link px-0 text-secondary" routerLink="/dashboard"
+          ><span class="fas fa-chevron-left" data-fa-transform="down-1"></span
+          ><span class="pl-2">back to dashboard management</span></a
+        >
+        <h3 class="text-uppercase ls">{{ dashboard.title }}</h3>
+
+        <p>{{ dashboard.description }}</p>
+
+            <button
+              *ngFor="let widget of dashboard.widgets"
+              routerLink="/dashboard/{{ dashboard._id }}/widget/{{ widget._id }}"
+              class="btn btn-success btn-sm mr-1 mt-1 rounded-0"
+            >
+              {{ widget.template.name }}
+            </button>
+
+
+      </div>
+    </div>
+    <div class="row"><div class="col"></div></div>
+
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-3">
+      <div *ngFor="let error of errors">{{ error.detail }}</div>
+    </div>
+  </div>
+</section>

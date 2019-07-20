@@ -1,0 +1,74 @@
+<section id="page-cart">
+  <div class="container">
+    <form #dashboardForm="ngForm">
+      <div class="row mb-4">
+        <div class="col">
+          <a class="btn btn-link px-0 text-secondary" routerLink="/dashboard"
+            ><span class="fas fa-chevron-left" data-fa-transform="down-1"></span
+            ><span class="pl-2">back to dashboard management</span></a
+          >
+          <h3 class="text-uppercase ls">Create dashboard</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="titleId">Title</label>
+            <input
+              [(ngModel)]="dashboard.title"
+              [ngClass]="{
+                'is-invalid': title.invalid && (title.dirty || title.touched) && title.errors.required
+              }"
+              required
+              #title="ngModel"
+              type="text"
+              name="title"
+              class="form-control"
+              id="titleId"
+              placeholder="test.com"
+            />
+            <div class="invalid-feedback">Title is required.</div>
+          </div>
+          <div class="form-group">
+            <label for="descriptionId">Description</label>
+            <textarea
+              [(ngModel)]="dashboard.description"
+              #description="ngModel"
+              class="form-control"
+              name="description"
+              id="descriptionId"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-end text-right mt-4">
+        <div class="col-12 px-0">
+          <hr class="border-300 mb-0" />
+          <hr class="border-300 mt-1" />
+        </div>
+        <div class="col-md-8 col-lg-6">
+          <div class="row justify-content-end mt-4">
+            <div class="col-10 col-sm-8">
+              <button
+                [disabled]="!dashboardForm.form.valid"
+                (click)="createDashboard()"
+                class="btn btn-block btn-lg btn-success"
+                type="submit"
+              >
+                Create Dashboard
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-3">
+      <div *ngFor="let error of errors">{{ error.detail }}</div>
+    </div>
+
+  </div>
+</section>

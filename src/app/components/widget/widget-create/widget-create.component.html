@@ -1,0 +1,179 @@
+<section id="page-cart">
+  <div class="container">
+    <form #widgetForm="ngForm">
+      <div class="row mb-4">
+        <div class="col">
+          <a class="btn btn-link px-0 text-secondary" routerLink="/dashboard"
+            ><span class="fas fa-chevron-left" data-fa-transform="down-1"></span
+            ><span class="pl-2">back to dashboard management</span></a
+          >
+          <h3 *ngIf="!editMode" class="text-uppercase ls">Create widget</h3>
+          <h3 *ngIf="editMode" class="text-uppercase ls">Update widget</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+
+          <div *ngIf="!editMode" class="fancy-tab">
+            <div class="nav-bar">
+              <div
+                *ngFor="let category of categories; index as i"
+                class="nav-bar-item"
+                [ngClass]="{ active: i == activeCategory }"
+                (click)="changeCategory(i)"
+              >
+                {{ category.name }}
+              </div>
+            </div>
+            <div class="tab-contents">
+              <div
+                *ngFor="let category of categories; index as i"
+                [ngClass]="{ active: i == activeCategory }"
+                class="tab-content"
+              >
+                <div>
+                  <button
+                    *ngFor="let template of category.templates"
+                    (click)="changeWidget(template)"
+                    [ngClass]="{ active: template == activeTemplate }"
+                    class="btn btn-success btn-sm mr-1 mt-1 rounded-0"
+                  >
+                    {{ template.name }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <h3 *ngIf="activeTemplate" class="mt-5">{{ activeTemplate.name }}</h3>
+
+          <ng-container *ngIf="activeTemplate && activeTemplate.sysName == 'specific-text'">
+            <p class="lead mt-3">
+              Specific text orem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aspernatur atque aut consectetur
+              delectus doloribus eaque earum enim eveniet ex exercitationem facere fugit illo iusto maiores nam neque,
+              obcaecati qui quia reiciendis rem sed tenetur, ullam veniam veritatis voluptatibus?
+            </p>
+          </ng-container>
+
+          <ng-container *ngIf="activeTemplate && activeTemplate.sysName == 'ssl-certificate'">
+            <p class="lead mt-3">
+              SSL certificate Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aspernatur atque aut consectetur
+              delectus doloribus eaque earum enim eveniet ex exercitationem facere fugit illo iusto maiores nam neque,
+              obcaecati qui quia reiciendis rem sed tenetur, ullam veniam veritatis voluptatibus?
+            </p>
+          </ng-container>
+
+
+          <div *ngIf="activeTemplate && (
+          activeTemplate.sysName == 'specific-text' || activeTemplate.sysName == 'ssl-certificate'
+          )"
+               class="form-group">
+            <label for="urlId">Url</label>
+            <input
+              [(ngModel)]="widget.settings.url"
+              [ngClass]="{
+                'is-invalid': url.invalid && (url.dirty || url.touched) && url.errors.required && url.errors.pattern
+              }"
+              required
+              #url="ngModel"
+              type="url"
+              name="url"
+              pattern="https?://.+"
+              class="form-control"
+              id="urlId"
+              placeholder="https://test.com"
+            />
+
+            <div class="invalid-feedback">Url is required.</div>
+
+          </div>
+
+          <div *ngIf="activeTemplate && activeTemplate.sysName == 'specific-text'" class="form-group">
+            <label for="textId">Text</label>
+            <input
+              [(ngModel)]="widget.settings.text"
+              [ngClass]="{
+                'is-invalid': text.invalid && (text.dirty || text.touched) && text.errors.required
+              }"
+              required
+              #text="ngModel"
+              type="text"
+              name="text"
+              class="form-control"
+              id="textId"
+              placeholder="title"
+            />
+            <div class="invalid-feedback">Text is required.</div>
+          </div>
+
+          <div *ngIf="activeTemplate && activeTemplate.sysName == 'specific-text'" class="form-group">
+            <label for="frequencyID">Frequency</label>
+            <select
+              [(ngModel)]="widget.settings.frequency"
+              [ngClass]="{
+                'is-invalid': frequency.invalid && (frequency.dirty || frequency.touched) && frequency.errors.required
+              }"
+              #frequency="ngModel"
+              required
+              name="frequency" class="form-control" id="frequencyID">
+              <option value="1">Every 10 minutes</option>
+              <option value="2">Every hour</option>
+              <option value="3">Every day</option>
+            </select>
+            <div class="invalid-feedback">Frequency is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="activeTemplate" class="row justify-content-end text-right mt-4">
+        <div class="col-12 px-0">
+          <hr class="border-300 mb-0" />
+          <hr class="border-300 mt-1" />
+        </div>
+        <div class="col-md-8 col-lg-6">
+          <div class="row justify-content-end mt-4">
+            <div class="col-10 col-sm-8">
+
+
+              <button
+                *ngIf="editMode"
+                [disabled]="!widgetForm.form.valid"
+                [routerLink]="" (click)="openConfirmationDialog(widget._id)"
+                class="btn btn-block btn-lg btn-danger"
+                type="submit"
+              >
+                Delete Widget
+              </button>
+
+              <button
+                *ngIf="!editMode"
+                [disabled]="!widgetForm.form.valid"
+                (click)="createWidget()"
+                class="btn btn-block btn-lg btn-dark"
+                type="submit"
+              >
+                Create Widget
+              </button>
+
+              <button
+                *ngIf="editMode"
+                [disabled]="!widgetForm.form.valid"
+                (click)="editWidget()"
+                class="btn btn-block btn-lg btn-dark"
+                type="submit"
+              >
+                Update Widget
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-3">
+      <div *ngFor="let error of errors">{{ error.detail }}</div>
+    </div>
+  </div>
+</section>

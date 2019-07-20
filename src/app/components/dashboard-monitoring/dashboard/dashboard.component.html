@@ -1,0 +1,76 @@
+<app-header [dashboard]="dashboard"></app-header>
+<div class="wrapper">
+  <div class="main">
+    <main class="bg-blue container-fluid pt-4 px-4">
+      <div class="row">
+        <ng-container *ngIf="dashboard">
+          <div *ngFor="let widget of dashboard.widgets" class="col col-lg-3 col-xl-2">
+            <app-specific-text
+              *ngIf="widget.template.sysName == 'specific-text'"
+              [dashboard]="dashboard"
+              [widget]="widget"
+            ></app-specific-text>
+
+            <app-ssl-certificate
+              *ngIf="widget.template.sysName == 'ssl-certificate'"
+              [dashboard]="dashboard"
+              [widget]="widget"
+            ></app-ssl-certificate>
+
+
+          </div>
+        </ng-container>
+
+        <!--        <ng-container *ngIf="dashboard">-->
+        <!--          <div *ngFor="let widget of dashboard.widgets" class="col col-lg-3 col-xl-2">-->
+        <!--            <app-specific-text-->
+        <!--              *ngIf="widget.template.sysName == 'specific-text'"-->
+        <!--              [dashboard]="dashboard"-->
+        <!--              [widget]="widget"-->
+        <!--            ></app-specific-text>-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+
+        <!--        <ng-container *ngIf="dashboard">-->
+        <!--          <div *ngFor="let widget of dashboard.widgets" class="col col-lg-3 col-xl-2">-->
+        <!--            <app-specific-text-->
+        <!--              *ngIf="widget.template.sysName == 'specific-text'"-->
+        <!--              [dashboard]="dashboard"-->
+        <!--              [widget]="widget"-->
+        <!--            ></app-specific-text>-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+
+        <!--        <ng-container *ngIf="dashboard">-->
+        <!--          <div *ngFor="let widget of dashboard.widgets" class="col col-lg-3 col-xl-2">-->
+        <!--            <app-specific-text-->
+        <!--              *ngIf="widget.template.sysName == 'specific-text'"-->
+        <!--              [dashboard]="dashboard"-->
+        <!--              [widget]="widget"-->
+        <!--            ></app-specific-text>-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+
+        <!--        <ng-container *ngIf="dashboard">-->
+        <!--          <div *ngFor="let widget of dashboard.widgets" class="col col-lg-3 col-xl-2">-->
+        <!--            <app-specific-text-->
+        <!--              *ngIf="widget.template.sysName == 'specific-text'"-->
+        <!--              [dashboard]="dashboard"-->
+        <!--              [widget]="widget"-->
+        <!--            ></app-specific-text>-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+
+        <!--        <ng-container *ngIf="dashboard">-->
+        <!--          <div *ngFor="let widget of dashboard.widgets" class="col col-lg-3 col-xl-2">-->
+        <!--            <app-specific-text-->
+        <!--              *ngIf="widget.template.sysName == 'specific-text'"-->
+        <!--              [dashboard]="dashboard"-->
+        <!--              [widget]="widget"-->
+        <!--            ></app-specific-text>-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+      </div>
+    </main>
+  </div>
+</div>

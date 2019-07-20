@@ -1,0 +1,27 @@
+<nav class="fixed-bottom navbar navbar-expand navbar-dark">
+  <a target="_blank" routerLink="/dashboard" class="d-flex mr-2"
+    ><i class="fas fa-home fa-lg text-white align-self-center"></i
+  ></a>
+  <a target="_blank" routerLink="/dashboard/{{ dashboard._id }}">
+    <h3 class="text-white pt-2 pl-1">{{ dashboard.title }}</h3>
+  </a>
+  <div class="navbar-collapse collapse">
+    <ul class="navbar-nav ml-auto">
+      <!--      <li class="nav-item active">-->
+      <!--        <a class="nav-link" href="#">-->
+      <!--          <i class="align-middle fas fa-envelope-open"></i>-->
+      <!--        </a>-->
+      <!--      </li>-->
+      <!--      <li class="nav-item ml-lg-2">-->
+      <!--        <a class="nav-link" href="#" >-->
+      <!--          <i class="align-middle fas fa-bell"></i>-->
+      <!--        </a>-->
+      <!--      </li>-->
+      <li class="nav-item ml-lg-2">
+        <a class="nav-link" target="_blank" routerLink="/dashboard/{{ dashboard._id }}">
+          <i class="align-middle fas fa-cog"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,120 @@
+<section class="py-0" id="page-signup">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 px-0">
+        <div class="sticky-top vh-lg-100 py-9">
+          <div class="bg-holder" style="background-image:url(assets/img/signup.jpg);"></div>
+        </div>
+      </div>
+      <div class="col-lg-6 bg-white py-6">
+        <div class="row h-100 align-items-center justify-content-center">
+          <div class="col-sm-8 col-md-6 col-lg-10 col-xl-8">
+            <h3 class="display-4 fs-2">Perfect for Startups, <br />freelancers &amp; companies.</h3>
+            <h6 class="text-danger mt-3">Specially crafted for the people who care about their sites.</h6>
+            <form class="mt-5" #registerForm="ngForm">
+              <div class="row mb-4">
+                <div class="col">
+                  <input
+                    [(ngModel)]="user.name"
+                    name="name"
+                    [ngClass]="{
+                      'is-invalid': name.invalid && (name.dirty || name.touched) && name.errors.required
+                    }"
+                    required
+                    #name="ngModel"
+                    class="form-control border-300 bg-light"
+                    type="text"
+                    placeholder="Your Name"
+                  />
+                  <div class="invalid-feedback">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <input
+                    [(ngModel)]="user.email"
+                    name="email"
+                    [ngClass]="{
+                      'is-invalid': email.invalid && (email.dirty || email.touched) && email.errors.required
+                    }"
+                    required
+                    #email="ngModel"
+                    class="form-control border-300 bg-light"
+                    type="email"
+                    placeholder="Email Address"
+                    autocomplete="email"
+                  />
+                  <div class="invalid-feedback">
+                    Email is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <input
+                    [(ngModel)]="user.password"
+                    [ngClass]="{
+                      'is-invalid': password.invalid && (password.dirty || password.touched) && password.errors.required
+                    }"
+                    required
+                    #password="ngModel"
+                    name="password"
+                    class="form-control border-300 bg-light"
+                    type="password"
+                    placeholder="Password"
+                    autocomplete="new-password"
+                  />
+                  <div class="invalid-feedback">
+                    Password is required.
+                  </div>
+                </div>
+                <div class="col">
+                  <input
+                    [(ngModel)]="user.passwordConfirmation"
+                    [ngClass]="{
+                      'is-invalid': passwordConfirmation.invalid && (passwordConfirmation.dirty || passwordConfirmation.touched) && passwordConfirmation.errors.required
+                    }"
+                    required
+                    #passwordConfirmation="ngModel"
+                    name="passwordConfirmation"
+                    class="form-control border-300 bg-light"
+                    type="password"
+                    placeholder="Confirmation"
+                    autocomplete="new-password"
+                  />
+                  <div class="invalid-feedback">
+                    Password is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4 align-items-center">
+                <div class="col-auto">
+                  <input
+                    [disabled]="!registerForm.form.valid"
+                    (click)="register()"
+                    class="btn btn-dark btn-block"
+                    type="submit"
+                    name="submit"
+                    value="Create an Account"
+                  />
+                </div>
+                <div class="col-sm">
+                  <p class="fs--1 text-700 mb-0 text-sans-serif mt-2 mt-lg-0">
+                    By signing up, you agree to the <a class="text-black" href="#">terms and conditions.</a>
+                  </p>
+                </div>
+              </div>
+            </form>
+
+            <div *ngIf="errors.length > 0" class="alert alert-danger">
+              <div *ngFor="let error of errors">{{ error.detail }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>

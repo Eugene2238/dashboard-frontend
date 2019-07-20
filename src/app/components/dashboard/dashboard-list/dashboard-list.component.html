@@ -1,0 +1,79 @@
+<section id="page-cart">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col">
+        <a class="btn btn-link px-0 text-secondary" routerLink="/"
+          ><span class="fas fa-chevron-left" data-fa-transform="down-1"></span><span class="pl-2">back to home</span></a
+        >
+        <h3 class="text-uppercase ls">Dashboard management</h3>
+      </div>
+    </div>
+
+    <ng-container *ngIf="dashboards.length > 0">
+      <div class="row border-bottom border-300">
+        <div class="col-12">
+          <div class="row">
+            <div class="col"><h6 class="fs--1 ls text-uppercase">dashboard</h6></div>
+            <div class="col"><h6 class="fs--1 ls text-uppercase">widgets</h6></div>
+            <div class="col"><h6 class="fs--1 ls text-uppercase">Link</h6></div>
+            <div class="col text-right"><h6 class="fs--1 ls text-uppercase"></h6></div>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngFor="let dashboard of dashboards; index as i">
+        <div class="row align-items-center py-3" [ngClass]="{ 'border-bottom border-300': i != dashboards.length - 1}">
+          <div class="col-sm-12 mt-4 mt-sm-0">
+            <div class="row align-items-center justify-content-end">
+              <div class="col">
+                <a routerLink="/dashboard/{{ dashboard['_id'] }}">{{ dashboard['title'] }}</a>
+              </div>
+              <div class="col"><h6 class="fs-0 font-weight-normal mb-0">{{ dashboard.widgets.length}}</h6></div>
+
+              <div class="col">
+                <h6 class="fs-0 font-weight-normal mb-0">
+                  <a routerLink="/d/{{ dashboard._id }}" target="_blank">https://tracking.info/d/{{ dashboard._id }}</a>
+                </h6>
+              </div>
+
+              <div class="col text-right">
+                <a routerLink="/dashboard/{{ dashboard['_id'] }}/widget/"><span class="fas fa-plus-circle text-200 fs-0 fs-md-1 fs-lg-2 mr-2"></span></a>
+                <a routerLink="/dashboard/{{ dashboard['_id'] }}/edit"><span class="fas fa-edit text-200 fs-0 fs-md-1 fs-lg-2 mr-2"></span></a>
+                <a [routerLink]="" (click)="openConfirmationDialog(dashboard['_id'])"
+                  ><span class="fas fa-times text-200 fs-0 fs-md-1 fs-lg-2 mr-2"></span
+                ></a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 mt-2">
+
+                <button
+                  *ngFor="let widget of dashboard.widgets"
+                  routerLink="/dashboard/{{ dashboard._id }}/widget/{{ widget._id }}"
+                  class="btn btn-success btn-sm mr-1 mt-1 rounded-0"
+                >
+                  {{ widget.template.name }}
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <div class="row justify-content-end text-right mt-4">
+      <div *ngIf="dashboards.length > 0" class="col-12 px-0">
+        <hr class="border-300 mb-0" />
+        <hr class="border-300 mt-1" />
+      </div>
+      <div class="col-md-8 col-lg-6">
+        <div class="row justify-content-end mt-4">
+          <div class="col-10 col-sm-8">
+            <a class="btn btn-block btn-lg btn-dark" routerLink="/dashboard/create">Add Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
