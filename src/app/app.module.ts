@@ -74,6 +74,7 @@ const config: SocketIoConfig = { url: '', options: {} };
   ],
 
   providers: [
+    TimeAgoPipe,
     DashboardService,
     UserService,
     ConfirmationDialogService,

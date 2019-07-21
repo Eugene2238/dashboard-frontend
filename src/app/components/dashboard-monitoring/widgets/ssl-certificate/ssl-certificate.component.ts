@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Widget } from '../../../../models/Widget';
-import { Dashboard } from '../../../../models/Dashboard';
+import {Widget, WidgetModel} from '../../../../models/Widget';
+import {Dashboard, DashboardModel} from '../../../../models/Dashboard';
 
 @Component({
   selector: 'app-ssl-certificate',
@@ -8,8 +8,8 @@ import { Dashboard } from '../../../../models/Dashboard';
   styleUrls: ['./ssl-certificate.component.css']
 })
 export class SslCertificateComponent implements OnInit {
-  @Input() widget: Widget;
-  @Input() dashboard: Dashboard;
+  @Input() widget: Widget = new WidgetModel();
+  @Input() dashboard: Dashboard = new DashboardModel();
   constructor() {}
 
   ngOnInit() {}

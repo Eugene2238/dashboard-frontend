@@ -12,7 +12,7 @@ export interface Dashboard {
 }
 
 export class DashboardModel {
-  // _id: string;
+  _id?: string;
   title: string;
   description?: string;
   widgets: Widget[];

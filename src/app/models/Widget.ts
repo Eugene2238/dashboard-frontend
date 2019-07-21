@@ -1,15 +1,15 @@
 import { User } from './User';
 import { Dashboard } from './Dashboard';
-import { Template } from './Template';
-import { WidgetSettings } from './WidgetSettings';
-import { WidgetResult } from './WidgetResult';
+import { Template, TemplateModel } from './Template';
+import { WidgetSettings, WidgetSettingsModel } from './WidgetSettings';
+import { WidgetResult, WidgetResultModel } from './WidgetResult';
 
 
 export interface Widget {
   _id?: string;
 
   settings: WidgetSettings;
-  result: WidgetResult;
+  result?: WidgetResult;
   template: Template;
   user: User;
   dashboard: Dashboard;
@@ -18,11 +18,10 @@ export interface Widget {
 }
 
 export class WidgetModel {
-  // _id?: string;
-
-  settings: WidgetSettings;
-  result: WidgetResult;
-  template: Template;
+  _id?: string;
+  settings: WidgetSettings = new WidgetSettingsModel();
+  result?: WidgetResult = new WidgetResultModel();
+  template: Template = new TemplateModel();
   user: User;
   dashboard: Dashboard;
   createdAt: Date;

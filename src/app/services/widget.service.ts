@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Category } from '../models/Category';
 import { Widget } from '../models/Widget';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,22 +12,22 @@ export class WidgetService {
   constructor(private http: HttpClient) {}
 
   getTemplates() {
-    return this.http.get<Category[]>('/api/template/');
+    return this.http.get<Category[]>(environment.baseUrl + 'api/template/');
   }
 
   addWidget(widget: Widget) {
-    return this.http.post<Widget>('/api/widget', widget);
+    return this.http.post<Widget>(environment.baseUrl + 'api/widget', widget);
   }
 
   getWidget(id: string) {
-    return this.http.get<Widget>('/api/widget/' + id);
+    return this.http.get<Widget>(environment.baseUrl + 'api/widget/' + id);
   }
 
   removeWidget(id: string) {
-    return this.http.delete<Widget>('/api/widget/' + id);
+    return this.http.delete<Widget>(environment.baseUrl + 'api/widget/' + id);
   }
 
   editWidget(widget: Widget) {
-    return this.http.put<Widget>('/api/widget/' + widget._id, widget);
+    return this.http.put<Widget>(environment.baseUrl + 'api/widget/' + widget._id, widget);
   }
 }

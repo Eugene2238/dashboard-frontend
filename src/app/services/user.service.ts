@@ -3,18 +3,22 @@ import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface LoginData {
   email: string;
   password: string;
 }
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
+  constructor(private http: HttpClient) {}
+
   private name: string;
   private token: string;
-
-  constructor(private http: HttpClient) {}
 
   private saveToken(token) {
     localStorage.setItem('dashboard_auth', JSON.stringify(token));
@@ -43,11 +47,11 @@ export class UserService {
   }
 
   public register(user: User): Observable<any> {
-    return this.http.post('/api/auth/register', user);
+    return this.http.post(environment.baseUrl + 'api/auth/register', user);
   }
 
   public login(loginData: LoginData): Observable<any> {
-    return this.http.post('/api/auth/login', loginData).pipe(map(token => this.saveToken(token)));
+    return this.http.post(environment.baseUrl + 'api/auth/login', loginData).pipe(map(token => this.saveToken(token)));
   }
 
   public isAuthenticated(): boolean {

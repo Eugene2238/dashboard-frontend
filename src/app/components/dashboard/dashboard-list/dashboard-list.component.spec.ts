@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardListComponent } from './dashboard-list.component';
+import {FormsModule} from '@angular/forms';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {ConfirmationDialogService} from '../../layout/confirmation-dialog/confirmation-dialog.service';
 
 describe('DashboardListComponent', () => {
   let component: DashboardListComponent;
@@ -8,7 +12,9 @@ describe('DashboardListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardListComponent ]
+      declarations: [ DashboardListComponent ],
+      imports: [ FormsModule, RouterTestingModule, HttpClientModule],
+      providers: [ConfirmationDialogService]
     })
     .compileComponents();
   }));

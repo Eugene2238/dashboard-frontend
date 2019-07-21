@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LayoutDashboardComponent } from './layout-dashboard.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('LayoutDashboardComponent', () => {
   let component: LayoutDashboardComponent;
@@ -8,7 +10,8 @@ describe('LayoutDashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutDashboardComponent ]
+      declarations: [ LayoutDashboardComponent ],
+      imports: [ RouterTestingModule, HttpClientModule],
     })
     .compileComponents();
   }));

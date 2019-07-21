@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Widget } from '../../../../models/Widget';
-import { Dashboard } from '../../../../models/Dashboard';
+import { Widget, WidgetModel } from '../../../../models/Widget';
+import {Dashboard, DashboardModel} from '../../../../models/Dashboard';
+
 
 @Component({
   selector: 'app-specific-text',
@@ -8,8 +9,8 @@ import { Dashboard } from '../../../../models/Dashboard';
   styleUrls: ['./specific-text.component.css']
 })
 export class SpecificTextComponent implements OnInit {
-  @Input() widget: Widget;
-  @Input() dashboard: Dashboard;
+  @Input() widget: Widget = new WidgetModel();
+  @Input() dashboard: Dashboard = new DashboardModel();
   constructor() {}
 
   ngOnInit() {}

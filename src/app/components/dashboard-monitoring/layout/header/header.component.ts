@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Dashboard } from '../../../../models/Dashboard';
+import {Dashboard, DashboardModel} from '../../../../models/Dashboard';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +7,7 @@ import { Dashboard } from '../../../../models/Dashboard';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() dashboard: Dashboard;
+  @Input() dashboard: Dashboard = new DashboardModel();
   constructor() {}
 
   ngOnInit() {}

@@ -1,11 +1,11 @@
 export interface WidgetResult {
-  date?: Date;
+  date?: string;
   status?: number;
   expirationDate?: Date;
 }
 
 export class WidgetResultModel {
-  date?: Date;
+  date?: string;
   status?: number;
   expirationDate?: Date;
 }
