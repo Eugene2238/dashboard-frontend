@@ -7,7 +7,7 @@
     "build": "ng build",
     "buildProd": "ng build --prod",
     "test": "ng test",
-    "testChromiumNoSandbox": "ng test --browsers=\"ChromiumNoSandbox\" --watch=true",
+    "testChromiumNoSandbox": "ng test --browsers=\"ChromiumNoSandbox\" --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
