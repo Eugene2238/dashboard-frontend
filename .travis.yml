@@ -4,14 +4,14 @@ services:
   - docker
 
 before_install:
-  - docker build -t eugene2238/dashboard_angular-unittests -f ./apps/dashboard_frontend/docker/chromium/Dockerfile ./apps/dashboard_frontend
-#  - docker build -t eugene2238/dashboard_angular-e2e-tests -f ./apps/dashboard_frontend/docker/angular-e2e/Dockerfile ./apps/dashboard_frontend
+  - docker build -t eugene2238/dashboard_angular-unittests -f ./docker/chromium/Dockerfile .
+#  - docker build -t eugene2238/dashboard_angular-e2e-tests -f ./docker/angular-e2e/Dockerfile .
 
 script:
   - docker run -e CI=true eugene2238/dashboard_angular-unittests npm run testChromiumNoSandbox
 #  - docker-compose -f docker-compose-angular-e2e-tests.yml up --build
 
 after_success:
-  - docker build -t eugene2238/dashboard_frontend ./apps/dashboard_frontend
+  - docker build -t eugene2238/dashboard_frontend .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push eugene2238/dashboard_frontend
