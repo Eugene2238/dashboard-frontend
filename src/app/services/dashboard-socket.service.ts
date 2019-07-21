@@ -5,15 +5,14 @@ import { Dashboard } from '../models/Dashboard';
 import { UserService } from './user.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DashboardSocketService {
-  constructor(private socket: Socket, private auth: UserService) {}
+    constructor(private socket: Socket, private auth: UserService) {}
 
-  public dashboard = this.socket.fromEvent<Dashboard>('dashboard');
+    public dashboard = this.socket.fromEvent<Dashboard>('dashboard');
 
-  getDashboard(id: string) {
-    this.socket.emit('dashboard', {id, token: this.auth.getAuthToken()});
-  }
-
+    getDashboard(id: string) {
+        this.socket.emit('dashboard', { id, token: this.auth.getAuthToken() });
+    }
 }

@@ -5,28 +5,28 @@ import { Dashboard } from '../models/Dashboard';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DashboardService {
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  getDashboard(id: string) {
-    return this.http.get<Dashboard>(environment.baseUrl + 'api/dashboard/' + id);
-  }
+    getDashboard(id: string) {
+        return this.http.get<Dashboard>(environment.baseUrl + 'api/dashboard/' + id);
+    }
 
-  getDashboards() {
-    return this.http.get<Dashboard[]>(environment.baseUrl + 'api/dashboard');
-  }
+    getDashboards() {
+        return this.http.get<Dashboard[]>(environment.baseUrl + 'api/dashboard');
+    }
 
-  addDashboard(newDashboard: Dashboard) {
-    return this.http.post<Dashboard>(environment.baseUrl + 'api/dashboard', newDashboard);
-  }
+    addDashboard(newDashboard: Dashboard) {
+        return this.http.post<Dashboard>(environment.baseUrl + 'api/dashboard', newDashboard);
+    }
 
-  removeDashboard(id: string) {
-    return this.http.delete<Dashboard>(environment.baseUrl + 'api/dashboard/' + id);
-  }
+    removeDashboard(id: string) {
+        return this.http.delete<Dashboard>(environment.baseUrl + 'api/dashboard/' + id);
+    }
 
-  editDashboard(dashboard: Dashboard) {
-    return this.http.put<Dashboard>(environment.baseUrl + 'api/dashboard/' + dashboard._id, dashboard);
-  }
+    editDashboard(dashboard: Dashboard) {
+        return this.http.put<Dashboard>(environment.baseUrl + 'api/dashboard/' + dashboard._id, dashboard);
+    }
 }
