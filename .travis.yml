@@ -9,7 +9,7 @@ before_install:
 
 script:
   - docker run -e CI=true eugene2238/dashboard_angular-unittests npm run testChromiumNoSandbox
-#  - docker-compose -f docker-compose-angular-e2e-tests.yml up --build
+  - docker-compose -f docker-compose-angular-e2e-tests.yml up --build
 
 after_success:
   - docker build -t eugene2238/dashboard_frontend .
