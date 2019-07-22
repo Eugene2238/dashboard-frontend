@@ -12,6 +12,6 @@ script:
   - docker run -e CI=true eugene2238/dashboard_angular-e2e-tests npm run e2e
 
 after_success:
-  - docker build -t eugene2238/dashboard_frontend .
+  - docker build -t eugene2238/dashboard_frontend -f ./docker/node/Dockerfile .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push eugene2238/dashboard_frontend
