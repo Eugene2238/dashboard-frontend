@@ -11,5 +11,4 @@
  <script src="assets/js/rellax.min.js"></script>
  <script src="assets/js/theme.js"></script>
 
- <script *ngIf="production == true"  type="text/javascript" src="/socket.io/socket.io.js"></script>
- <script *ngIf="production == false"  type="text/javascript" src="http://dashboard_backend:3000/socket.io/socket.io.js"></script>
+ <script type="text/javascript" src="{{ baseUrl }}/socket.io/socket.io.js"></script>

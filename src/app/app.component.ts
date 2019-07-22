@@ -9,5 +9,5 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
   title = 'Dashboard';
-  production = environment.production;
+  baseUrl = environment.baseUrl;
 }
