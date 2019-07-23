@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // baseUrl: 'dashboard-backend:3000/'
-  baseUrl: 'http://tracking.info/'
+  baseUrl: 'https://tracking.info/'
 };
 
 /*
